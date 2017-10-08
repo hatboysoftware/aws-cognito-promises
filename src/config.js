@@ -4,12 +4,15 @@ import { CognitoUserPool } from 'amazon-cognito-identity-js'
 
 let appConfig
 let userPool
+let awsConfig
 
 export const set = config => {
   appConfig = config
 
-  Config.region = appConfig.region
-  Config.credentials = new CognitoIdentityCredentials({
+  awsConfig = new Config
+
+  awsConfig.region = appConfig.region
+  awsConfig.credentials = new CognitoIdentityCredentials({
     IdentityPoolId: appConfig.IdentityPoolId
   })
 
@@ -29,4 +32,8 @@ export const getUserPool = () => {
 
 export const getUser = () => {
   return userPool.getCurrentUser()
+}
+
+export const getAWSConfig = () => {
+  return awsConfig
 }

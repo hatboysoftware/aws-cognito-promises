@@ -1,4 +1,5 @@
-import { getUser } from './config'
+import {get, getAWSConfig, getUser} from './config'
+import refreshCredentials from './refreshCredentials';
 
 export default function() {
   const cognitoUser = getUser()
@@ -9,7 +10,15 @@ export default function() {
         if (err) {
           reject(err)
         } else {
-          resolve(session)
+          let endpoint = 'cognito-idp.' + getAWSConfig().region + '.amazonaws.com/' + get().UserPoolId
+          getAWSConfig().credentials.params.Logins[endpoint] = session.getIdToken().getJwtToken();
+          refreshCredentials()
+              .then(() => {
+                  resolve(session)
+              })
+              .catch((err) => {
+                  reject(err)
+              })
         }
       })
     })

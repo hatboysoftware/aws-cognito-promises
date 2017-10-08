@@ -1,7 +1,6 @@
 import { CognitoUser, AuthenticationDetails } from 'amazon-cognito-identity-js'
-import { Config } from 'aws-sdk';
 
-import { getUserPool, get } from './config'
+import { getUserPool } from './config'
 
 export default function(username, password) {
   const authenticationData = {
