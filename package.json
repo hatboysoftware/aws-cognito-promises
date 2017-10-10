@@ -4,7 +4,7 @@
   "description": "AWS Cognito promise library",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dbroadhurst/aws-cognito-promises"
+    "url": "https://github.com/hatboysoftware/aws-cognito-promises"
   },
   "main": "./dist/index.js",
   "scripts": {
@@ -23,9 +23,9 @@
   "homepage": "http://cognito.dbroadhurst.net",
   "license": "MIT",
   "dependencies": {
-    "babel-polyfill": "^6.23.0",
     "amazon-cognito-identity-js": "^1.19.0",
-    "aws-sdk": "^2.94.0"
+    "aws-sdk": "^2.130.0",
+    "babel-polyfill": "^6.23.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
